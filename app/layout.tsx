@@ -4,7 +4,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Portfolio | Manish Kumar',
-  description: 'My professional portfolio website'
+  description: 'My professional portfolio website',
+  icons: {
+    icon: '/icon.png'
+  }
 }
 
 export default function RootLayout({
