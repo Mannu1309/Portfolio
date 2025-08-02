@@ -31,7 +31,7 @@ export function WorkExperienceCard({ experience, onClick, delay = 0 }: WorkExper
 
   return (
     <Card
-      className="relative overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl group border-l-4 border-l-blue-400 backdrop-blur-md bg-white/10 border-white/20"
+      className="relative overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl group border-l-4 border-l-blue-400 hover:border-l-blue-500 backdrop-blur-md bg-white/10 border-white/20"
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

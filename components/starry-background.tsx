@@ -333,30 +333,9 @@ export function StarryBackground() {
   }, [])
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
+    <div className="fixed inset-0 z-0 pointer-events-none bg-black">
       {/* Black space background */}
       <canvas ref={canvasRef} className="absolute inset-0 z-10" />
-
-      {/* Earth at the bottom */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-0"
-        style={{
-          height: "40vh", // Earth takes up bottom 40% of viewport
-          backgroundImage: "url('/images/earth-from-space.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-
-      {/* Subtle gradient overlay to blend Earth with space */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-5"
-        style={{
-          height: "40vh",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 100%)",
-        }}
-      />
     </div>
   )
 }

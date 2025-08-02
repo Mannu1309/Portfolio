@@ -117,7 +117,31 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(53, 64, 82, 0.7);
+  ;
+  /* slate-500/50 */
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(136, 166, 201, 0.5)
+    /* slate-500/70 */
 }

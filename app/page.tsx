@@ -89,6 +89,14 @@ export default function Portfolio() {
     Tools: ["Git", "GitHub", "Webpack", "Babel", "NPM", "Prettier", "Chrome Extensions"],
   }
 
+  const skillColor = {
+    "Frontend Development": "text-blue-400",
+    "Backend & API": "text-green-400",
+    "Cloud & DevOps": "text-purple-400",
+    "Security & Testing": "text-red-400",
+    Tools: "text-yellow-400",
+  }
+
   const workExperience = [
     {
       company: "AltrumAI (Aligne Consulting India Pvt. Ltd.)",
@@ -97,7 +105,7 @@ export default function Portfolio() {
       duration: "Jan 2025 – July 2025",
       location: "Remote, London",
       logo: "/experience/altrumai-logo.png",
-      companyImage: "/placeholder.svg?height=300&width=600&text=AltrumAI+Office+London",
+      companyImage: "/org/altrum.jpg",
       teamSize: "3 Engineers",
       projectsCompleted: 4,
       technologies: [
@@ -122,7 +130,7 @@ export default function Portfolio() {
       impact: [
         "Built a scalable SaaS platform serving 1000+ AI requests per minute",
         "Reduced deployment time by 70% with automated CI/CD pipelines",
-        "Implemented security measures protecting sensitive user data for 500+ clients",
+        "Implemented security measures protecting sensitive user data for 500+ requests",
         "Created comprehensive API documentation reducing developer onboarding time by 50%",
       ],
       achievements: [
@@ -175,9 +183,9 @@ export default function Portfolio() {
       duration: "July 2021 – Present",
       location: "Pune, Maharashtra",
       logo: "/experience/tcs-logo.png",
-      companyImage: "/placeholder.svg?height=300&width=600&text=TCS+Office+Pune",
+      companyImage: "/org/tcs.jpg",
       teamSize: "15-20 Developers",
-      projectsCompleted: 12,
+      projectsCompleted: 7,
       technologies: [
         "React.js",
         "Node.js",
@@ -239,7 +247,9 @@ export default function Portfolio() {
     {
       name: "FileNest - Document Upload Application",
       techStack: ["React JS", "Firebase Authentication", "Firebase Storage", "HTML5/CSS3", "JavaScript"],
-      image: "/placeholder.svg?height=200&width=400&text=FileNest+App+Screenshot",
+      image: "/projects/filenest.jpg",
+      code: 'https://github.com/Mannu1309/FileNest',
+      demoUrl: "https://file-nest-bay.vercel.app/",
       description: [
         "Built a Google Drive-like app with Firebase for real-time file uploads and secure access",
         "Integrated Firebase Authentication for login and session management",
@@ -248,7 +258,9 @@ export default function Portfolio() {
     {
       name: "LiveLogistics - Real-Time Food Delivery Tracking System",
       techStack: ["Apache Kafka", "Node.js", "JavaScript", "Git", "GitHub"],
-      image: "/placeholder.svg?height=200&width=400&text=LiveLogistics+Dashboard",
+      image: "/projects/livelogistic.jpg",
+      code: 'https://github.com/Mannu1309/LiveLogistics',
+      demoUrl: "",
       description: [
         "Developed Kafka producers/consumers to stream live updates of delivery rider locations",
         "Built backend logic for processing and displaying order-tracking information in real-time",
@@ -446,7 +458,7 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
                 <FadeInSection key={index} delay={index * 200} direction={index % 2 === 0 ? "left" : "right"}>
-                  <Card className="border-l-4 border-l-green-400 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group overflow-hidden backdrop-blur-md bg-white/10 border-white/20">
+                  <Card className="border-l-4 hover:border-l-green-400 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group overflow-hidden backdrop-blur-md bg-white/10 border-white/20">
                     <div className="relative h-48 overflow-hidden">
                       <img
                         src={project.image || "/placeholder.svg"}
@@ -481,21 +493,21 @@ export default function Portfolio() {
                         ))}
                       </ul>
                       <div className="flex gap-2">
-                        <Button
+                        {project.demoUrl && <Button
                           size="sm"
                           variant="outline"
-                          className="hover:scale-105 transition-transform bg-white/10 border-white/30 text-white hover:bg-white/20"
+                          className="hover:scale-105 transition-transform bg-white/10 border-white/30 text-white hover:text-white hover:bg-green-800"
                         >
                           <ExternalLink className="h-3 w-3 mr-1" />
-                          Demo
-                        </Button>
+                          <a href={`${project.demoUrl}`} target="_blank">Demo</a>
+                        </Button>}
                         <Button
                           size="sm"
                           variant="outline"
-                          className="hover:scale-105 transition-transform bg-white/10 border-white/30 text-white hover:bg-white/20"
+                          className="hover:scale-105 transition-transform bg-white/10 border-white/30 text-white hover:text-white hover:bg-indigo-950"
                         >
                           <Github className="h-3 w-3 mr-1" />
-                          Code
+                          <a href={`${project.code}`} target="_blank">Code</a>
                         </Button>
                       </div>
                     </CardContent>
@@ -515,33 +527,67 @@ export default function Portfolio() {
             </FadeInSection>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Object.entries(skills).map(([category, skillList], index) => (
-                <FadeInSection key={index} delay={index * 100}>
-                  <Card className="border-l-4 border-l-purple-400 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group backdrop-blur-md bg-white/10 border-white/20">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg text-white group-hover:text-purple-400 transition-colors">
-                        {getSkillIcon(category)}
-                        {category}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex flex-wrap gap-2">
-                        {skillList.map((skill, skillIndex) => (
-                          <Badge
-                            key={skillIndex}
-                            variant="outline"
-                            className="text-xs bg-white/10 border-white/30 text-white hover:bg-purple-400/20 hover:border-purple-400/50 transition-all duration-200 hover:scale-105"
-                          >
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </FadeInSection>
-              ))}
+              {Object.entries(skills).map(([category, skillList], index) => {
+                const borderColor =
+                  {
+                    "Frontend Development": "hover:border-l-blue-400",
+                    "Backend & API": "hover:border-l-green-400",
+                    "Cloud & DevOps": "hover:border-l-purple-400",
+                    "Security & Testing": "hover:border-l-red-400",
+                    Tools: "hover:border-l-yellow-500",
+                  }[category] || "hover:border-l-white";
+
+                const hoverTextColor =
+                  {
+                    "Frontend Development": "group-hover:text-blue-400",
+                    "Backend & API": "group-hover:text-green-400",
+                    "Cloud & DevOps": "group-hover:text-purple-400",
+                    "Security & Testing": "group-hover:text-red-400",
+                    Tools: "group-hover:text-yellow-500",
+                  }[category] || "";
+
+                const hoverTagColor =
+                  {
+                    "Frontend Development": "hover:bg-blue-800/50",
+                    "Backend & API": "hover:bg-green-800/50",
+                    "Cloud & DevOps": "hover:bg-purple-800/50",
+                    "Security & Testing": "hover:bg-red-800/50",
+                    Tools: "hover:bg-yellow-500/50",
+                  }[category] || "";
+
+                return (
+                  <FadeInSection key={index} delay={index * 100}>
+                    <Card
+                      className={`border-l-4 ${borderColor} hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group backdrop-blur-md bg-white/10 border-white/20`}
+                    >
+                      <CardHeader>
+                        <CardTitle
+                          className={`flex items-center gap-2 text-lg text-white transition-colors ${hoverTextColor}`}
+                        >
+                          {getSkillIcon(category)}
+                          {category}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2">
+                          {skillList.map((skill, skillIndex) => (
+                            <Badge
+                              key={skillIndex}
+                              variant="outline"
+                              className={`text-xs bg-white/10 border-white/30 text-white hover:bg-opacity-20 ${hoverTagColor} hover:border-opacity-50 transition-all duration-200 hover:scale-105`}
+                            >
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </FadeInSection>
+                );
+              })}
             </div>
           </section>
+
 
           {/* Education */}
           <section id="education" className="mb-16 py-16">
@@ -553,10 +599,10 @@ export default function Portfolio() {
             </FadeInSection>
 
             <FadeInSection delay={200}>
-              <Card className="border-l-4 border-l-orange-400 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden backdrop-blur-md bg-white/10 border-white/20">
+              <Card className="border-l-4 border-l-orange-400 hover:border-l-orange-400 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden backdrop-blur-md bg-white/10 border-white/20">
                 <div className="relative h-32 bg-gradient-to-r from-orange-500/80 to-red-500/80">
                   <img
-                    src="/placeholder.svg?height=128&width=600&text=Punjabi+University+Campus"
+                    src="/education.png"
                     alt="Punjabi University"
                     className="w-full h-full object-cover opacity-60"
                   />
