@@ -180,7 +180,7 @@ export default function Portfolio() {
       company: "Tata Consultancy Services",
       url: 'https://www.tcs.com',
       position: "Frontend Developer",
-      duration: "July 2021 – Present",
+      duration: "July 2021 – Nov 2024",
       location: "Pune, Maharashtra",
       logo: "/experience/tcs-logo.png",
       companyImage: "/org/tcs.jpg",
