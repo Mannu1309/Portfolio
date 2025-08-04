@@ -757,7 +757,7 @@ export default function Portfolio() {
       {visitorNumber && (
         <FadeInSection delay={500}>
           <p className="flex justify-center text-white/80 mb-5 text-sm">
-            🎉 You are visitor number  <strong className="block text-white ml-1"> {visitorNumber}</strong>
+            🕵️‍♂️ Stalkers… I mean visitors:  <strong className="block text-white ml-1"> {visitorNumber}</strong>
           </p>
         </FadeInSection>
       )}
