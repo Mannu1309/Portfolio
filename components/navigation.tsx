@@ -89,8 +89,8 @@ export function Navigation() {
                     size="sm"
                     onClick={() => scrollToSection(item.id)}
                     className={`flex items-center gap-2 ${activeSection === item.id
-                        ? "bg-white/20 text-white"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
+                      ? "bg-white/20 text-white"
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                       }`}
                   >
                     <Icon className="h-4 w-4" />
@@ -128,8 +128,8 @@ export function Navigation() {
                     size="sm"
                     onClick={() => scrollToSection(item.id)}
                     className={`w-full justify-start gap-2 ${activeSection === item.id
-                        ? "bg-white/20 text-white"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
+                      ? "bg-white/20 text-white"
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                       }`}
                   >
                     <Icon className="h-4 w-4" />

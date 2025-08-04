@@ -34,6 +34,28 @@ import { StarryBackground } from "@/components/starry-background"
 export default function Portfolio() {
   const [selectedExperience, setSelectedExperience] = useState<any>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [visitorNumber, setVisitorNumber] = useState<number | null>(null)
+
+  // Handle visitor count
+  useEffect(() => {
+    const handleVisitor = async () => {
+      if (typeof window !== 'undefined') {
+        const { isFirstVisit } = await import('@/lib/isFirstVisit')
+        const { incrementUniqueVisitor } = await import('@/lib/incrementVisitor')
+        const { getVisitorCount } = await import('@/lib/visitorCount')
+
+        if (isFirstVisit()) {
+          const count = await incrementUniqueVisitor()
+          setVisitorNumber(count)
+        } else {
+          const count = await getVisitorCount()
+          setVisitorNumber(count)
+        }
+      }
+    }
+
+    handleVisitor()
+  }, [])
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth"
@@ -731,6 +753,15 @@ export default function Portfolio() {
           />
         )}
       </div>
+
+      {visitorNumber && (
+        <FadeInSection delay={500}>
+          <p className="flex justify-center text-white/80 mb-5 text-sm">
+            🎉 You are visitor number  <strong className="block text-white ml-1"> {visitorNumber}</strong>
+          </p>
+        </FadeInSection>
+      )}
+
     </div>
   )
 }
